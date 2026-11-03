@@ -10,7 +10,7 @@ namespace StudentRegistrationAPI.Models
         public string StudentName { get; set; } 
         [Required]
         [StringLength(20)]
-        public string StudentID { get; set; } 
+        public string StudentRegistration { get; set; } 
         [Required]
         public string Department { get; set; } 
         [Required]

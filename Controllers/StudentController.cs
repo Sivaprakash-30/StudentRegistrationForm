@@ -5,8 +5,8 @@ using StudentRegistrationAPI.Services;
 
 namespace StudentRegistrationAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    [Route("api/[controller]")] 
+    [ApiController] 
     public class StudentController : ControllerBase
     {
         private readonly IStudentService _studentService;
@@ -22,7 +22,7 @@ namespace StudentRegistrationAPI.Controllers
             var students = await _studentService.GetAllStudents();
             return Ok(students);
         }
-        [HttpPost]
+        [HttpPost] 
         public async Task<IActionResult> AddStudent(Student student)
         {
             try
@@ -37,8 +37,8 @@ namespace StudentRegistrationAPI.Controllers
                 return Conflict(new
                 {
                     message = "You are already a member kindly give another email"
-                });
-            }
-        }
+                }); 
+            } 
+        } 
     }
 }

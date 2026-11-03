@@ -16,7 +16,7 @@ namespace StudentRegistrationAPI.Services
         private string GetConnectionString()
         {
             return _configuration
-                .GetConnectionString("DefaultConnection")!;
+                .GetConnectionString("MyConnection");
         }
 
         public async Task<bool> AddStudent(Student student)
@@ -25,7 +25,7 @@ namespace StudentRegistrationAPI.Services
             using SqlCommand cmd = new SqlCommand("AddStudent", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue( "@StudentName", student.StudentName);
-            cmd.Parameters.AddWithValue( "@StudentID", student.StudentID);
+
             cmd.Parameters.AddWithValue( "@Department", student.Department);
             cmd.Parameters.AddWithValue( "@Gender", student.Gender);
             cmd.Parameters.AddWithValue("@Email", student.Email);
@@ -53,14 +53,14 @@ namespace StudentRegistrationAPI.Services
                 {
                     StudentId = Convert.ToInt32(dr["StudentId"]),
                     StudentName = dr["StudentName"].ToString(),
-                    StudentID = dr["StudentID"].ToString(),
+                    StudentRegistration = dr["StudentID"].ToString(),
                     Department = dr["Department"].ToString(),
                     Gender = dr["Gender"].ToString(),
                     Email = dr["Email"].ToString(),
                     DOB = Convert.ToDateTime(dr["DOB"]) 
                 });
             }
-            return students;
+            return students; 
         }
     }
 }
